@@ -3,6 +3,8 @@
 # Python template for a kata
 
 - Template repository for Python katas (Dockerized)
+- The repository is created as a **GitHub repository template**, so that you can easily create your own GitHub repository from this one.
+  - [Here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) you can find the instructions: easy peasy!
 - Everything is Dockerized. If you run "make", you can see all the actions that you can execute (e.g. running the tests, static analysis, code coverage, etc.)
 
 ## Prerequisites
@@ -15,8 +17,8 @@
   2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
 
 ## TO DO
-- run linters and tests in pipeline
 - dependabot
 - security scanning
 - mutation testing
 - publish mutation testing and coverage reports
+- Send message to Slack if the pipeline fails
