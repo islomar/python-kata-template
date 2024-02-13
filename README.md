@@ -1,3 +1,5 @@
+![Run linters and tests workflow](https://github.com/islomar/python-kata-template/actions/workflows/run-linters-and-tests.yml/badge.svg)
+
 # Python template for a kata
 
 - Template repository for Python katas (Dockerized)
