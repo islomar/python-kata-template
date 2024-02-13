@@ -9,4 +9,4 @@ class TestFoo:
 
         result = foo.add(1, 2)
 
-        expect(result).to(equal(4))
+        expect(result).to(equal(3))
