@@ -17,7 +17,6 @@
   2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
 
 ## TO DO
-- dependabot
 - security scanning
 - mutation testing
 - publish mutation testing and coverage reports
