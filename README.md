@@ -17,7 +17,14 @@
   2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
 
 ## TO DO
-- security scanning
-- mutation testing
-- publish mutation testing and coverage reports
+- Include Mutation Testing
+- Better explain the libraries and GH repo configuration (e.g. dependabot, linters, rename-project, test coverage, mutation testing, etc.)
+  - https://github.com/boxed/mutmut
+  - https://opensource.com/article/20/7/mutmut-python
+  - https://medium.com/poka-techblog/hunting-mutants-with-mutmut-5f575b625598
+  - Mutmut keeps a result cache in `.mutmut-cache` so if you want to make sure you run a full mutmut run just delete this file.
+  - Alternative: https://github.com/sixty-north/cosmic-ray
 - Send message to Slack if the pipeline fails
+- security scanning
+- publish mutation testing and coverage reports
+- Make mutmut mutation faster using [Hammett](https://github.com/boxed/hammett)

@@ -21,6 +21,8 @@ expects = "^0.9.0"
 doublex-expects = "^0.7.1"
 black = "^24.2.0"
 coverage = "^7.4.1"
+mutmut = "^2.4.4"
+hammett = "^0.9.4"
 
 [tool.yapf]
 based_on_style = "google"
@@ -28,3 +30,8 @@ based_on_style = "google"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mutmut]
+paths_to_mutate="src"
+tests_dir="tests"
+runner="python -m hammett -x"

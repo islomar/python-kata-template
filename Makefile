@@ -8,10 +8,6 @@ help:  ## Show this help.
 local-setup: ## Set up the local environment (e.g. install git hooks)
 	scripts/local-setup.sh
 
-.PHONY: build
-build: ## Builds the Docker image
-	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build
-
 .PHONY: add-package
 add-package: ## Add package to the project: 'make add-package package=<package-name>'
 	docker compose run --rm --no-deps python-kata-name poetry add $(package)
@@ -22,14 +18,18 @@ add-dev-package: ## Add dev package to the project: 'make add-dev-package packag
 	docker compose run --rm --no-deps python-kata-name poetry add $(package) -G dev
 	make build
 
+.PHONY: build
+build: ## Builds the Docker image
+	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build
+
 .PHONY: build-with-updated-packages
 build-with-updated-packages: ## Rebuild the docker image with updated python packages
 	rm -f poetry.lock
 	docker compose run --rm --no-deps chatcommands poetry update
 	make build
 
-.PHONY: update
-update: ## Updates the Python packages
+.PHONY: update-python-packages
+update-python-packages: ## Updates the Python packages
 	docker compose run --rm --no-deps python-kata-name poetry update
 
 .PHONY: check-dockerfile
@@ -57,6 +57,23 @@ test-coverage: ## Generate an HTML test coverage report after running all the te
 	docker compose run --rm python-kata-name poetry run coverage run --branch -m pytest tests
 	docker compose run --rm python-kata-name poetry run coverage html
 	@echo "You can find the generated coverage report here: ${PWD}/htmlcov/index.html"
+
+.PHONY: test-run-mutation
+test-run-mutation: ## Run mutation testing
+	docker compose run --rm python-kata-name poetry run mutmut run
+
+.PHONY: test-show-mutants
+test-show-mutants-results: ## Show mutants found (it requires having run 'make test-run-mutation')
+	docker compose run --rm python-kata-name poetry run mutmut results
+
+.PHONY: test-generate-mutation-html-report
+test-generate-mutation-html-report: ## Generate HTML mutation report
+	docker compose run --rm python-kata-name poetry run mutmut html
+	@echo "The HTML report can be accessed here: http://localhost:63342/python-kata-template/html/index.html"
+
+.PHONY: test-generate-mutation-junit-report
+test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
+	docker compose run --rm python-kata-name poetry run mutmut junitxml --suspicious-policy=ignore --untested-policy=ignore
 
 .PHONY: pre-commit
 pre-commit: check-format check-typing test
