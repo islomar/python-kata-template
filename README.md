@@ -24,6 +24,7 @@
   - https://medium.com/poka-techblog/hunting-mutants-with-mutmut-5f575b625598
   - Mutmut keeps a result cache in `.mutmut-cache` so if you want to make sure you run a full mutmut run just delete this file.
   - Alternative: https://github.com/sixty-north/cosmic-ray
+- https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 - Send message to Slack if the pipeline fails
 - security scanning
 - publish mutation testing and coverage reports

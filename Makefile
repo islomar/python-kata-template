@@ -60,7 +60,7 @@ test-coverage: ## Generate an HTML test coverage report after running all the te
 
 .PHONY: test-run-mutation
 test-run-mutation: ## Run mutation testing
-	docker compose run --rm python-kata-name poetry run mutmut run
+	docker compose run --rm python-kata-name poetry run mutmut run --CI
 
 .PHONY: test-show-mutants
 test-show-mutants-results: ## Show mutants found (it requires having run 'make test-run-mutation')
@@ -79,7 +79,7 @@ test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
 pre-commit: check-format check-typing test
 
 .PHONY: rename-project
-rename-project: ## Rename project: 'make rename name=<new-name>'
-	sed -i 's/python-kata-name/$(name)/' docker-compose.yaml
-	sed -i 's/python-kata-name/$(name)/' Makefile
-	sed -i 's/python-kata-name/$(name)/' pyproject.toml
+rename-project: ## Rename project: 'make rename new-name=<new-name>'
+	sed -i 's/python-kata-name/$(new-name)/' docker-compose.yaml
+	sed -i 's/python-kata-name/$(new-name)/' Makefile
+	sed -i 's/python-kata-name/$(new-name)/' pyproject.toml
