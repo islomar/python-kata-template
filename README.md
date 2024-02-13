@@ -10,4 +10,11 @@
 
 ## How to update or add a Python package
   1. In the terminal, run `make add-dev-package package=<package_name>`. 
-2Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
+  2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
+
+## TO DO
+- run linters and tests in pipeline
+- dependabot
+- security scanning
+- mutation testing
+- publish mutation testing and coverage reports
