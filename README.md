@@ -17,7 +17,7 @@
   2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
 
 ## TO DO
-- Include Mutation Testing
+- Include Mutation Testing in the pipeline
 - Better explain the libraries and GH repo configuration (e.g. dependabot, linters, rename-project, test coverage, mutation testing, etc.)
   - https://github.com/boxed/mutmut
   - https://opensource.com/article/20/7/mutmut-python

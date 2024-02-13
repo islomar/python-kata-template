@@ -14,6 +14,9 @@ jobs:
       run: |
         make check-format
         make check-typing
-    - name: Run all tests
+    - name: Run all tests with coverage
       run: |
-        make test        
+        make test-coverage
+    - name: Run mutation testing
+      run: |
+        make test-run-mutation           
