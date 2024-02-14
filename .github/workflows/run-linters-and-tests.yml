@@ -10,19 +10,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Check typing and format
+    - name: 📐 Check typing and format
       run: |
         make check-format
         make check-typing
-    - name: Run all tests with coverage
+    - name: 🧪 Run all tests with coverage
       run: |
         make test-coverage
-    - name: Run mutation testing
+    - name: 📤 Upload Test Coverage Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-html-report
+        path: htmlcov
+    - name: 🧟 Run mutation testing
       run: |
         make test-run-mutation
         make test-generate-mutation-html-report
     - name: 📤 Upload Mutation Test Report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: mutmut-html-report
         path: html/src
