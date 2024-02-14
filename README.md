@@ -12,7 +12,7 @@
 ## HOW to use it
 1. Generate a repo using this one as a template, following [these instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template)
 2. Replace the `python-kata-name` placeholder that appears in several files with your own name (e.g. `python-fizzbuzz`). 
-   - You can easily do it
+   - For example, you can easily do it running `make rename-project new-name=python-fizzbuzz`
 
 
 ## Prerequisites
