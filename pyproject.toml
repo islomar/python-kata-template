@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-kata-name"
-version = "0.1.0"
+version = "1.0.0"
 description = "This repository is a Python template project for any kata"
 authors = ["Isidro Lopez <islomar@gmail.com>"]
 license = "MIT"
@@ -9,9 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 mypy = "^1.8"
-yapf = "^0.40.1"
-ruff = "^0.0.280"
-
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
@@ -23,9 +20,6 @@ black = "^24.2.0"
 coverage = "^7.4.1"
 mutmut = "^2.4.4"
 hammett = "^0.9.4"
-
-[tool.yapf]
-based_on_style = "google"
 
 [build-system]
 requires = ["poetry-core"]

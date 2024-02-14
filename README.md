@@ -5,8 +5,8 @@
 - Template repository for Python katas (Dockerized)
 - The repository is created as a **GitHub repository template**, so that you can easily create your own GitHub repository from this one.
   - [Here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template) you can find the instructions: easy peasy!
-  - There is a **project** associated with this repo, with some pending improvements.
-- Everything is **Dockerized**. If you run "make" from the root folder of the project, you can see all the actions that you can execute (e.g. running the tests, static analysis, code coverage, etc.)
+  - There is a **GH project** associated with this repo, with some pending improvements.
+- Everything is **Dockerized**. If you run `make` from the root folder of the project, you can see all the actions that you can execute (e.g. running the tests, static analysis, code coverage, etc.)
 
 
 ## HOW to use it
@@ -17,7 +17,7 @@
 
 ## Prerequisites
 - You need `Docker` installed.
-- Just the first time, run `make local-setup`.
+- **IMPORTANT**: just the first time, run `make local-setup`.
     - This will set up things like configuring Git hooks. The `pre-commit` hook will automatically run the linters and tests, rejecting the commit in case any of them fail.
 
 

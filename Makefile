@@ -25,7 +25,7 @@ build: ## Builds the Docker image
 .PHONY: build-with-updated-packages
 build-with-updated-packages: ## Rebuild the docker image with updated python packages
 	rm -f poetry.lock
-	docker compose run --rm --no-deps chatcommands poetry update
+	docker compose run --rm --no-deps python-kata-name poetry update
 	make build
 
 .PHONY: update-python-packages
