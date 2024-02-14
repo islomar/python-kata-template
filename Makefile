@@ -60,7 +60,7 @@ test-coverage: ## Generate an HTML test coverage report after running all the te
 
 .PHONY: test-run-mutation
 test-run-mutation: ## Run mutation testing
-	docker compose run --rm python-kata-name poetry run mutmut run --CI
+	docker compose run --rm python-kata-name poetry run mutmut run --no-progress --CI
 
 .PHONY: test-show-mutants
 test-show-mutants-results: ## Show mutants found (it requires having run 'make test-run-mutation')

@@ -17,15 +17,19 @@
   2. Commit and push the changes updated in the file `poetry.lock` and `pyproject.toml`.
 
 ## TO DO
+- Avoid "root" user forced by Docker
 - Include Mutation Testing in the pipeline
 - Better explain the libraries and GH repo configuration (e.g. dependabot, linters, rename-project, test coverage, mutation testing, etc.)
   - https://github.com/boxed/mutmut
   - https://opensource.com/article/20/7/mutmut-python
   - https://medium.com/poka-techblog/hunting-mutants-with-mutmut-5f575b625598
+  - https://blog.stackademic.com/automating-mutation-testing-with-mutmut-and-github-actions-9767b4fc75b5
+    - It talks about GitHub Actions Caching Strategy
   - Mutmut keeps a result cache in `.mutmut-cache` so if you want to make sure you run a full mutmut run just delete this file.
   - Alternative: https://github.com/sixty-north/cosmic-ray
 - https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 - Send message to Slack if the pipeline fails
 - security scanning
 - publish mutation testing and coverage reports
+  - https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 - Make mutmut mutation faster using [Hammett](https://github.com/boxed/hammett)

@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Check typing and format
       run: |
         make check-format
@@ -19,4 +19,10 @@ jobs:
         make test-coverage
     - name: Run mutation testing
       run: |
-        make test-run-mutation           
+        make test-run-mutation
+        make test-generate-mutation-html-report
+    - name: 📤 Upload Mutation Test Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: mutmut-html-report
+        path: html/src
