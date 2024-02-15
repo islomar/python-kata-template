@@ -16,7 +16,7 @@
 
 
 ## Prerequisites
-- You need `Docker` installed.
+- You need [Docker](https://docs.docker.com/get-docker/) installed.
 - **IMPORTANT**: just the first time, run `make local-setup`.
     - This will set up things like configuring Git hooks. The `pre-commit` hook will automatically run the linters and tests, rejecting the commit in case any of them fail.
 
@@ -29,15 +29,25 @@
 
 
 ## Functionalities included
-- There is pipeline configured as a GitHub Action which runs all the linters, the tests and both the coverage and mutation testing
-  - The artifacts with the HTML reports generated can be downloaded from the GitHub project tab "Actions" --> "Summary" --> "Artifacts"
+- There is pipeline configured as a GitHub Action which runs all the linters, the tests and both the coverage and mutation testing.
+  - The artifacts with the HTML reports generated can be downloaded from the GitHub project tab "Actions" --> "Summary" --> "Artifacts".
 - [**Dependabot**](https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file) is configured at GitHub repository level, in order to automatically update the dependencies weekly.
 - A **badge** on top of this README file shows the status of the GH Action (passing or failing).
+- [Poetry](https://python-poetry.org) is used as the Python packaging and dependency manager. 
 - I have used [**black**](https://github.com/psf/black) for both linting and formatting.
-  - If the format check fails, you can automatically format whatever missing running `make reformat` 
-- You can easily run the **test coverage** with `make test-coverage`
-- You can easily run **mutation testing** with `make test-run-mutation`
-  - Mutmut keeps a result cache in `.mutmut-cache` so if you want to make sure you run a full mutmut run just delete this file.
+  - If the format check fails, you can automatically format whatever missing running `make reformat`.
+- I use [mypy](https://mypy.readthedocs.io/en/stable/) as static type checker.
+
+### Testing
+  - Libraries
+    - [pytest](https://docs.pytest.org)
+    - [python-doublex](https://python-doublex.readthedocs.io/en/latest/): powerful test doubles framework for Python
+    - [expects](https://expects.readthedocs.io/en/stable/): an expressive and extensible TDD/BDD assertion library for Python
+    - [doublex-expects](https://github.com/jaimegildesagredo/doublex-expects): a matchers library for the Expects assertion library
+    - [pytest-xdist](https://github.com/pytest-dev/pytest-xdist): it extends `pytest` with new test execution modes, the most used being distributing tests across multiple CPUs to speed up test execution
+  - You can easily run the **test coverage** with `make test-coverage`
+  - You can easily run **mutation testing** with `make test-run-mutation`
+    - Mutmut keeps a result cache in `.mutmut-cache` so if you want to make sure you run a full mutmut run just delete this file.
 
 
 ## More interesting info
