@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: 📐 Check typing and format
+    - name: 📐 Static analysis
       run: |
         make check-format
         make check-typing
