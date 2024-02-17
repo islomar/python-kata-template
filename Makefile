@@ -36,6 +36,10 @@ update-python-packages: ## Updates the Python packages
 check-dockerfile: ## Validate the Dockerfile
 	docker run --rm -i hadolint/hadolint:latest-alpine < Dockerfile
 
+.PHONY: check-style
+check-style:  ## Check style (using flake8)
+	docker compose run --rm --no-deps python-kata-name poetry run flake8 .
+
 .PHONY: check-typing
 check-typing:  ## Check types (using mypy)
 	docker compose run --rm --no-deps python-kata-name poetry run mypy .
@@ -76,10 +80,12 @@ test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
 	docker compose run --rm python-kata-name poetry run mutmut junitxml --suspicious-policy=ignore --untested-policy=ignore
 
 .PHONY: pre-commit
-pre-commit: check-format check-typing test
+pre-commit: check-format check-typing check-style test
 
 .PHONY: rename-project
 rename-project: ## Rename project: 'make rename new-name=<new-name>'
 	sed -i 's/python-kata-name/$(new-name)/' docker-compose.yaml
 	sed -i 's/python-kata-name/$(new-name)/' Makefile
 	sed -i 's/python-kata-name/$(new-name)/' pyproject.toml
+	sed -i 's/python-kata-template/$(new-name)/' README.md
+	sed -i 's/python-kata-template/$(new-name)/' Makefile
