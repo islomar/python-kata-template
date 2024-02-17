@@ -6,6 +6,8 @@ WORKDIR /code
 
 COPY pyproject.toml /code
 
-RUN pip install --no-cache-dir poetry==1.7.1 && poetry install
+RUN pip install --no-cache-dir poetry==1.7.1
+RUN poetry config virtualenvs.create false
+RUN poetry install
 
 COPY . /code
