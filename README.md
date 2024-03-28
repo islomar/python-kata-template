@@ -64,3 +64,6 @@
   - https://blog.stackademic.com/automating-mutation-testing-with-mutmut-and-github-actions-9767b4fc75b5
     - It talks about GitHub Actions Caching Strategy
   - Alternative: https://github.com/sixty-north/cosmic-ray
+- Docker permissions (in case it were needed)
+  - https://vsupalov.com/docker-shared-permissions/
+  - https://aschmelyun.com/blog/fixing-permissions-issues-with-docker-compose-and-php/
