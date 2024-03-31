@@ -82,6 +82,10 @@ test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
 .PHONY: pre-commit
 pre-commit: check-format check-typing check-style test
 
+.PHONY: shell
+shell: ## Get into the Docker container
+	docker compose run --rm python-kata-name sh
+
 .PHONY: rename-project
 rename-project: ## Rename project: 'make rename new-name=<new-name>'
 	sed -i 's/python-kata-name/$(new-name)/' docker-compose.yaml
