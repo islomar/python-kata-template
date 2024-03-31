@@ -48,8 +48,8 @@ check-typing:  ## Check types (using mypy)
 check-format: ## Check the format (using black)
 	docker compose run --rm --no-deps python-kata-name poetry run black --check .
 
-.PHONY: reformat
-reformat:  ## Format Python code
+.PHONY: fix-format
+fix-format:  ## Format Python code
 	docker compose run --rm --no-deps python-kata-name poetry run black .
 
 .PHONY: test

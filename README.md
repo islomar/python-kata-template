@@ -35,7 +35,7 @@
 - A **badge** on top of this README file shows the status of the GH Action (passing or failing).
 - [Poetry](https://python-poetry.org) is used as the Python packaging and dependency manager. 
 - Use of [**black**](https://github.com/psf/black) for formatting.
-  - If the format check fails, you can automatically format whatever missing running `make reformat`.
+  - If the format check fails, you can automatically format whatever missing running `make fix-format`.
 - Use of [**flake8**](https://flake8.pycqa.org/en/latest/) for style (linting): `make check-style`
 - Use of [**mypy**](https://mypy.readthedocs.io/en/stable/) as static type checker.
 - Use of [**Editorconfig**](https://editorconfig.org/): EditorConfig helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs.
