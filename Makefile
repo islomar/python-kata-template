@@ -22,6 +22,10 @@ add-dev-package: ## Add dev package to the project: 'make add-dev-package packag
 build: ## Builds the Docker image
 	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build
 
+.PHONY: build-no-cache
+build-no-cache: ## Builds the Docker image without cache
+	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker compose build --no-cache
+
 .PHONY: build-with-updated-packages
 build-with-updated-packages: ## Rebuild the docker image with updated python packages
 	rm -f poetry.lock
@@ -37,46 +41,46 @@ check-dockerfile: ## Validate the Dockerfile
 	docker run --rm -i hadolint/hadolint:latest-alpine < Dockerfile
 
 .PHONY: check-style
-check-style:  ## Check style (using flake8)
+check-style: build  ## Check style (using flake8)
 	docker compose run --rm --no-deps python-kata-name poetry run flake8 .
 
 .PHONY: check-typing
-check-typing:  ## Check types (using mypy)
+check-typing: build  ## Check types (using mypy)
 	docker compose run --rm --no-deps python-kata-name poetry run mypy .
 
 .PHONY: check-format
-check-format: ## Check the format (using black)
+check-format: build ## Check the format (using black)
 	docker compose run --rm --no-deps python-kata-name poetry run black --check .
 
 .PHONY: fix-format
-fix-format:  ## Format Python code
+fix-format: build ## Format Python code
 	docker compose run --rm --no-deps python-kata-name poetry run black .
 
 .PHONY: test
-test: ## Run all the tests
+test: build ## Run all the tests
 	docker compose run --rm --no-deps python-kata-name poetry run pytest -n auto tests -ra
 
 .PHONY: test-coverage
-test-coverage: ## Generate an HTML test coverage report after running all the tests
+test-coverage: build ## Generate an HTML test coverage report after running all the tests
 	docker compose run --rm python-kata-name poetry run coverage run --branch -m pytest tests
 	docker compose run --rm python-kata-name poetry run coverage html
 	@echo "You can find the generated coverage report here: ${PWD}/htmlcov/index.html"
 
 .PHONY: test-run-mutation
-test-run-mutation: ## Run mutation testing
+test-run-mutation: build ## Run mutation testing
 	docker compose run --rm python-kata-name poetry run mutmut run --no-progress --CI
 
 .PHONY: test-show-mutants
-test-show-mutants-results: ## Show mutants found (it requires having run 'make test-run-mutation')
+test-show-mutants-results: build ## Show mutants found (it requires having run 'make test-run-mutation')
 	docker compose run --rm python-kata-name poetry run mutmut results
 
 .PHONY: test-generate-mutation-html-report
-test-generate-mutation-html-report: ## Generate HTML mutation report
+test-generate-mutation-html-report: build ## Generate HTML mutation report
 	docker compose run --rm python-kata-name poetry run mutmut html
 	@echo "The HTML report can be accessed here: http://localhost:63342/python-kata-template/html/index.html"
 
 .PHONY: test-generate-mutation-junit-report
-test-generate-mutation-junit-report: ## Generate JUnit XML mutation report
+test-generate-mutation-junit-report: build ## Generate JUnit XML mutation report
 	docker compose run --rm python-kata-name poetry run mutmut junitxml --suspicious-policy=ignore --untested-policy=ignore
 
 .PHONY: pre-commit
