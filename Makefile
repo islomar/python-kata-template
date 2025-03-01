@@ -62,7 +62,7 @@ test: build ## Run all the tests
 
 .PHONY: test-coverage
 test-coverage: build ## Generate an HTML test coverage report after running all the tests
-	docker compose run --rm python-kata-name poetry run coverage run --branch -m pytest tests
+	docker compose run --rm python-kata-name poetry run coverage run -m pytest tests
 	docker compose run --rm python-kata-name poetry run coverage html
 	@echo "You can find the generated coverage report here: ${PWD}/htmlcov/index.html"
 

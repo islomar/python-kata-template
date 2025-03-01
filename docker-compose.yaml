@@ -4,3 +4,6 @@ services:
   python-kata-name:
     build: .
     image: python-kata-name
+    volumes:
+      - .:/code
+
