@@ -16,7 +16,7 @@ add-package: ## Add package to the project: 'make add-package package=<package-n
 .PHONY: add-dev-package
 add-dev-package: ## Add dev package to the project: 'make add-dev-package package=<package-name>'
 	docker compose run --rm --no-deps python-kata-name poetry add $(package) -G dev
-	make build
+	make build-no-cache
 
 .PHONY: build
 build: ## Builds the Docker image

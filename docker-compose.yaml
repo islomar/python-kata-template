@@ -6,4 +6,6 @@ services:
     image: python-kata-name
     volumes:
       - .:/code
+    environment:
+      PYTHONPATH: .
 
